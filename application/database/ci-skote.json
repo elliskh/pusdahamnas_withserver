@@ -1,0 +1,100 @@
+[
+{"type":"header","version":"5.1.1","comment":"Export to JSON plugin for PHPMyAdmin"},
+{"type":"database","name":"ci-skote"},
+{"type":"table","name":"actions","database":"ci-skote","data":
+[
+{"id":"1","uuid":"7e661758-f17b-4112-8597-a76d4cf57421","nama":"lihat","is_active":"1","created_at":"2022-08-27 04:56:09","updated_at":"2022-08-30 04:06:46","deleted_at":null},
+{"id":"2","uuid":"0fd48d7a-0393-4cd5-adc7-979464fe16c0","nama":"tambah","is_active":"1","created_at":"2022-08-27 04:56:09","updated_at":"2022-08-27 09:18:05","deleted_at":null},
+{"id":"3","uuid":"6d30753a-f84d-40d8-a287-eabb7d8627b3","nama":"ubah","is_active":"1","created_at":"2022-08-27 04:56:09","updated_at":"2022-08-27 09:18:05","deleted_at":null},
+{"id":"4","uuid":"786630af-9d79-4e4a-a6b7-d6e162ed719e","nama":"hapus","is_active":"1","created_at":"2022-08-27 04:56:09","updated_at":"2022-08-27 09:18:05","deleted_at":null},
+{"id":"5","uuid":null,"nama":"unduh","is_active":"","created_at":"2022-08-27 16:32:38","updated_at":"2022-08-27 16:33:58","deleted_at":"2022-08-27 23:33:58"}
+]
+}
+,{"type":"table","name":"ci_sessions","database":"ci-skote","data":
+[
+{"id":"5daab9d81ec6e3cd946856682c1c114de049bc19","ip_address":"172.31.0.1","timestamp":"1663065016","data":"0x5f5f63695f6c6173745f726567656e65726174657c693a313636333036353031363b69647c733a36303a226345354352533878524746696133423051305a76624373794e444e595a5456495654464b59575668646a564d56477472536e5977616a6c30647a303d223b6e616d617c733a31333a2241646d696e6973747261746f72223b757365726e616d657c733a353a2261646d696e223b726f6c655f69647c733a36303a224d466877566b524e54574a46626a56585a697443646b566b55314633613267784e46466e51574934555752524f5846714b7a64766546464a5254303d223b6e616d615f726f6c657c733a31333a2261646d696e6973747261746f72223b6d756c7469726f6c657c623a313b6d6f64657c733a353a226c69676874223b736964656261727c733a383a22766572746963616c223b62756c616e7c693a393b746168756e7c693a323032323b"},
+{"id":"c5d03a60add5951e973ddcec03e4ee454b2eaf88","ip_address":"172.31.0.1","timestamp":"1663065387","data":"0x5f5f63695f6c6173745f726567656e65726174657c693a313636333036353038383b69647c733a36303a2263456c595657597953446476635756534d6c64696433684a4f5645334b305933634578474f473971524539575255566b57574a4b55477459647a303d223b6e616d617c733a31333a2241646d696e6973747261746f72223b757365726e616d657c733a353a2261646d696e223b726f6c655f69647c733a36303a22636e4d72566c64734d6b5a474d30356f656d5a46576e4a4c5248704c565752614b316c58636b567053545577513046746447354456465679647a303d223b6e616d615f726f6c657c733a31333a2261646d696e6973747261746f72223b6d756c7469726f6c657c623a313b6d6f64657c733a353a226c69676874223b736964656261727c733a31303a22686f72697a6f6e74616c223b62756c616e7c693a393b746168756e7c693a323032323b"}
+]
+}
+,{"type":"table","name":"contoh","database":"ci-skote","data":
+[
+{"id":"1","uuid":"test","kolom_1":"test","kolom_2":"test","kolom_3":"test","is_active":"1","created_at":"2022-09-10 05:16:39","updated_at":null,"deleted_at":null},
+{"id":"2","uuid":"test","kolom_1":"test","kolom_2":"test","kolom_3":"test","is_active":"1","created_at":"2022-09-10 05:16:39","updated_at":null,"deleted_at":null},
+{"id":"3","uuid":"test","kolom_1":"test","kolom_2":"test","kolom_3":"test","is_active":"1","created_at":"2022-09-10 05:16:39","updated_at":null,"deleted_at":null}
+]
+}
+,{"type":"table","name":"menus","database":"ci-skote","data":
+[
+{"id":"1","uuid":"3a553ae6-d07a-498b-8a59-eb1b4880fb22","ref_menu_group_id":"1","parent_id":null,"urutan":"1","route":"dashboard\/index","path":"dashboard\/","nama":"Beranda","icon":"bx bx-home-alt","is_active":"1","created_at":"2022-08-27 04:56:10","updated_at":"2022-09-09 07:26:31","deleted_at":null},
+{"id":"2","uuid":"9be618e6-2abd-4ef9-b1bc-288075b8662c","ref_menu_group_id":"2","parent_id":null,"urutan":"2","route":"#","path":null,"nama":"Manajemen Menu","icon":"bx bx-menu-alt-left","is_active":"1","created_at":"2022-08-27 04:56:10","updated_at":"2022-08-30 07:24:41","deleted_at":null},
+{"id":"3","uuid":"ea968bb0-4594-471f-b761-1f5db30447f1","ref_menu_group_id":"2","parent_id":"2","urutan":"2","route":"menu\/index","path":"menu\/","nama":"Menu Utama","icon":null,"is_active":"1","created_at":"2022-08-27 04:56:10","updated_at":"2022-09-09 06:55:13","deleted_at":null},
+{"id":"4","uuid":"cf3f5511-1559-4d6f-aecb-73e82b1a4870","ref_menu_group_id":"2","parent_id":"2","urutan":"3","route":"menu\/sub","path":"menu\/","nama":"Sub Menu","icon":null,"is_active":"1","created_at":"2022-08-27 04:56:10","updated_at":"2022-09-09 06:55:13","deleted_at":null},
+{"id":"5","uuid":"a33cee4a-0780-4b60-bd44-ec05f245431b","ref_menu_group_id":"2","parent_id":null,"urutan":"3","route":"otoritas\/index","path":"otoritas\/","nama":"Otoritas","icon":"bx bx-key","is_active":"1","created_at":"2022-08-27 04:56:10","updated_at":"2022-09-09 06:55:13","deleted_at":null},
+{"id":"6","uuid":"22cd2eaf-d1a7-41cc-8ee8-9fecab5b1274","ref_menu_group_id":"2","parent_id":null,"urutan":"5","route":"users\/index","path":"users\/","nama":"Pengguna","icon":"bx bx-user","is_active":"1","created_at":"2022-08-27 04:56:10","updated_at":"2022-09-09 06:55:13","deleted_at":null},
+{"id":"7","uuid":null,"ref_menu_group_id":"2","parent_id":null,"urutan":"4","route":"hak_akses\/index","path":"hak_akses\/","nama":"Hak Akses","icon":"bx bx-lock-open","is_active":"1","created_at":"2022-08-27 07:37:35","updated_at":"2022-09-09 06:55:13","deleted_at":null},
+{"id":"8","uuid":"94b673c6-640d-4f99-b0e7-28b584ff0b48","ref_menu_group_id":null,"parent_id":"2","urutan":"1","route":"referensi\/group_menu\/index","path":"referensi\/group_menu\/","nama":"Grup Menu","icon":null,"is_active":"1","created_at":"2022-08-27 15:11:40","updated_at":"2022-09-09 06:55:13","deleted_at":null}
+]
+}
+,{"type":"table","name":"menu_role","database":"ci-skote","data":
+[
+{"role_id":"1","menu_id":"1","action_id":"1","is_active":"1"},
+{"role_id":"1","menu_id":"1","action_id":"2","is_active":"0"},
+{"role_id":"1","menu_id":"1","action_id":"3","is_active":"0"},
+{"role_id":"1","menu_id":"1","action_id":"4","is_active":"0"},
+{"role_id":"1","menu_id":"2","action_id":"1","is_active":"1"},
+{"role_id":"1","menu_id":"3","action_id":"1","is_active":"1"},
+{"role_id":"1","menu_id":"3","action_id":"2","is_active":"1"},
+{"role_id":"1","menu_id":"3","action_id":"3","is_active":"1"},
+{"role_id":"1","menu_id":"3","action_id":"4","is_active":"1"},
+{"role_id":"1","menu_id":"4","action_id":"1","is_active":"1"},
+{"role_id":"1","menu_id":"4","action_id":"2","is_active":"1"},
+{"role_id":"1","menu_id":"4","action_id":"3","is_active":"1"},
+{"role_id":"1","menu_id":"4","action_id":"4","is_active":"1"},
+{"role_id":"1","menu_id":"5","action_id":"1","is_active":"1"},
+{"role_id":"1","menu_id":"5","action_id":"2","is_active":"1"},
+{"role_id":"1","menu_id":"5","action_id":"3","is_active":"1"},
+{"role_id":"1","menu_id":"5","action_id":"4","is_active":"1"},
+{"role_id":"1","menu_id":"6","action_id":"1","is_active":"1"},
+{"role_id":"1","menu_id":"6","action_id":"2","is_active":"1"},
+{"role_id":"1","menu_id":"6","action_id":"3","is_active":"1"},
+{"role_id":"1","menu_id":"6","action_id":"4","is_active":"1"},
+{"role_id":"1","menu_id":"7","action_id":"1","is_active":"1"},
+{"role_id":"1","menu_id":"7","action_id":"2","is_active":"1"},
+{"role_id":"1","menu_id":"7","action_id":"3","is_active":"1"},
+{"role_id":"1","menu_id":"7","action_id":"4","is_active":"1"},
+{"role_id":"1","menu_id":"8","action_id":"1","is_active":"1"},
+{"role_id":"1","menu_id":"8","action_id":"2","is_active":"1"},
+{"role_id":"1","menu_id":"8","action_id":"3","is_active":"1"},
+{"role_id":"1","menu_id":"8","action_id":"4","is_active":"1"},
+{"role_id":"2","menu_id":"1","action_id":"1","is_active":"1"},
+{"role_id":"2","menu_id":"1","action_id":"2","is_active":"0"}
+]
+}
+,{"type":"table","name":"ref_menu_group","database":"ci-skote","data":
+[
+{"id":"1","uuid":"7a3da03e-89fd-4396-a47a-ad8a9b35c695","nama":"Dashboard","urutan":"1","is_active":"1","created_at":"2022-08-27 05:46:12","updated_at":"2022-08-30 08:15:49","deleted_at":null},
+{"id":"2","uuid":"c7db7e15-c120-4224-8fe6-8cc63354e90e","nama":"Pengaturan","urutan":"3","is_active":"1","created_at":"2022-08-27 05:46:35","updated_at":"2022-08-27 16:07:20","deleted_at":null},
+{"id":"3","uuid":null,"nama":"Utama","urutan":"2","is_active":"1","created_at":"2022-08-27 16:07:00","updated_at":"2022-08-27 16:07:15","deleted_at":null}
+]
+}
+,{"type":"table","name":"roles","database":"ci-skote","data":
+[
+{"id":"1","uuid":"c03bd81b-3310-4a40-bf06-6dd811b90d77","nama":"administrator","is_active":"1","created_at":"2022-08-27 04:56:09","updated_at":"2022-08-30 08:07:41","deleted_at":null},
+{"id":"2","uuid":"acc44540-857b-441d-afcb-b755367ef2e6","nama":"operator","is_active":"1","created_at":"2022-08-27 04:56:09","updated_at":"2022-08-30 08:07:54","deleted_at":null}
+]
+}
+,{"type":"table","name":"users","database":"ci-skote","data":
+[
+{"id":"1","uuid":"861e5d40-4415-44d8-a7b0-1d8a7d2b4433","username":"admin","email":"admin@email.com","password":"$argon2i$v=19$m=65536,t=4,p=1$V3RqZGZ4MDBBSUFOdlZmbA$Uug6urHzLLhEDCyjbKjfH4zc0Bk0WETlIwT4SdTozdw","nama":"Administrator","is_active":"1","created_at":"2022-08-27 04:56:10","updated_at":"2022-09-12 12:52:38","deleted_at":null},
+{"id":"2","uuid":"874da2f6-8556-4688-8b7e-c6b41df8071a","username":"operator","email":"operator@email.com","password":"$argon2i$v=19$m=65536,t=4,p=1$bzY1b1EvbzBoY0Vtekhwdg$HvZ5Ney2rqHsOV8P2ZqPFpQOPbRIE4xeF+gJoG4QsyI","nama":"Operator","is_active":"1","created_at":"2022-08-27 04:56:10","updated_at":"2022-08-30 12:07:48","deleted_at":null}
+]
+}
+,{"type":"table","name":"user_role","database":"ci-skote","data":
+[
+{"user_id":"1","role_id":"1","is_active":"1"},
+{"user_id":"1","role_id":"2","is_active":"1"},
+{"user_id":"2","role_id":"1","is_active":"0"},
+{"user_id":"2","role_id":"2","is_active":"1"}
+]
+}
+]

@@ -1,0 +1,106 @@
+<?php
+
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Detail_rasetnis_model extends CI_Model
+{ 
+	public $table = 'tb_snp';
+	public $column_order = [null, 'judul','link','deskripsi','is_active', null, 'deleted_at'];
+	public $column_search = ['judul', 'link', 'deskripsi'];
+	public $order = ['id' => 'asc'];
+
+	private function _get_datatables_query()
+	{ 
+      $this->db->select("a.*, b.id as detail_id, b.bab as detail_bab, b.deskripsi as detail_deskripsi, b.nomor_halaman, b.dokumen, b.is_active as detail_is_active");
+      $this->db->from('tb_snp a');
+      $check_ss = decrypt($this->session->userdata('id'));
+      $id = decrypt($this->uri->segment(4));
+
+    if($check_ss==30){
+      //$this->db->where(['a.deleted_at' => null,	]);
+      $this->db->where(['a.id' => $id,	'b.deleted_at' => null]);
+      //$this->db->join('users c', 'a.id_user = c.id');
+    }else{
+      $this->db->where(['a.deleted_at' => null]);
+      //$this->db->join('users c', "c.id = $check_ss");
+    }
+      $this->db->join('tb_snp_detail b', 'a.id = b.id_snp');
+      ///$this->db->group_by('nama_anggaran');
+      //$query = $this->db->get();
+        
+		$i = 0;
+
+		foreach ($this->column_search as $item) { // looping awal
+			if ($_GET['search']['value']) { // jika datatable mengirimkan pencarian dengan metode POST
+
+				if ($i === 0) // looping awal
+				{
+					$this->db->group_start();
+					$this->db->like($item, $_GET['search']['value']);
+				} else {
+					$this->db->or_like($item, $_GET['search']['value']);
+				}
+
+				if (count($this->column_search) - 1 == $i)
+					$this->db->group_end();
+			}
+			$i++;
+		}
+
+		if ($_GET['order']) {
+			$this->db->order_by($this->column_order[$_GET['order']['0']['column']], $_GET['order']['0']['dir']);
+		} else if (isset($this->order)) {
+			$order = $this->order;
+			$this->db->order_by(key($order), $order[key($order)]);
+		}
+	}
+
+	public function get_datatables()
+	{
+		$this->_get_datatables_query();
+		if ($_GET['length'] != -1)
+			$this->db->limit($_GET['length'], $_GET['start']);
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function count_filtered()
+	{
+		$this->_get_datatables_query();
+		$query = $this->db->get();
+		return $query->num_rows();
+	}
+
+	public function count_all()
+	{
+		$this->db->where([
+			'deleted_at' => null,
+		]);
+		$this->db->from($this->table);
+		return $this->db->count_all_results();
+	}
+
+	public function checkKontenActive()
+	{
+		$this->db->from($this->table);
+		///$this->db->where('nama', $nama);
+		$this->db->where('is_active =', 1);
+
+		$data = $this->db->get();
+
+		return (int) $data->num_rows();
+	}
+
+	public function check()
+	{
+	/*	$id = decrypt(post('id'));
+		if (!$id) show_404();
+
+		$data = $this->db->get_where('tb_rolling', ['id' => $id])->row();
+		if (!$data) show_404();
+
+		return $id;*/
+	}
+}
+
+/* End of file User_model.php */

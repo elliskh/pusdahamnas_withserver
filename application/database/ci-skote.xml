@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 5.1.1
+- https://www.phpmyadmin.net
+-
+- Host: mysql
+- Generation Time: Sep 13, 2022 at 10:50 AM
+- Server version: 10.6.4-MariaDB-1:10.6.4+maria~focal
+- PHP Version: 7.4.24
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="ci-skote" collation="utf8mb4_general_ci" charset="utf8mb4">
+            <pma:table name="actions">
+                CREATE TABLE `actions` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `uuid` varchar(255) DEFAULT NULL,
+                  `nama` varchar(255) DEFAULT NULL,
+                  `is_active` enum('0','1') DEFAULT '1',
+                  `created_at` timestamp NULL DEFAULT current_timestamp(),
+                  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+                  `deleted_at` timestamp NULL DEFAULT NULL,
+                  PRIMARY KEY (`id`) USING BTREE
+                ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+            </pma:table>
+            <pma:table name="ci_sessions">
+                CREATE TABLE `ci_sessions` (
+                  `id` varchar(128) NOT NULL,
+                  `ip_address` varchar(45) NOT NULL,
+                  `timestamp` int(10) unsigned NOT NULL DEFAULT 0,
+                  `data` blob NOT NULL,
+                  KEY `ci_sessions_timestamp` (`timestamp`) USING BTREE
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+            </pma:table>
+            <pma:table name="contoh">
+                CREATE TABLE `contoh` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `uuid` varchar(255) DEFAULT NULL,
+                  `kolom_1` varchar(255) DEFAULT NULL,
+                  `kolom_2` varchar(255) DEFAULT NULL,
+                  `kolom_3` varchar(255) DEFAULT NULL,
+                  `is_active` enum('0','1') DEFAULT '1',
+                  `created_at` timestamp NULL DEFAULT current_timestamp(),
+                  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+                  `deleted_at` timestamp NULL DEFAULT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+            <pma:table name="menus">
+                CREATE TABLE `menus` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `uuid` varchar(255) DEFAULT NULL,
+                  `ref_menu_group_id` int(11) DEFAULT NULL,
+                  `parent_id` int(11) DEFAULT NULL,
+                  `urutan` int(255) DEFAULT NULL,
+                  `route` varchar(255) DEFAULT NULL,
+                  `path` varchar(255) DEFAULT NULL,
+                  `nama` varchar(255) DEFAULT NULL,
+                  `icon` varchar(255) DEFAULT NULL,
+                  `is_active` enum('0','1') DEFAULT '1',
+                  `created_at` timestamp NULL DEFAULT current_timestamp(),
+                  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+                  `deleted_at` timestamp NULL DEFAULT NULL,
+                  PRIMARY KEY (`id`) USING BTREE
+                ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+            </pma:table>
+            <pma:table name="menu_role">
+                CREATE TABLE `menu_role` (
+                  `role_id` int(11) NOT NULL,
+                  `menu_id` int(11) NOT NULL,
+                  `action_id` int(11) NOT NULL,
+                  `is_active` enum('0','1') DEFAULT '1',
+                  PRIMARY KEY (`role_id`,`menu_id`,`action_id`) USING BTREE,
+                  KEY `role` (`role_id`) USING BTREE,
+                  KEY `menu` (`menu_id`) USING BTREE,
+                  KEY `action` (`action_id`) USING BTREE
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+            </pma:table>
+            <pma:table name="ref_menu_group">
+                CREATE TABLE `ref_menu_group` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `uuid` varchar(255) DEFAULT NULL,
+                  `nama` varchar(255) DEFAULT NULL,
+                  `urutan` int(11) DEFAULT NULL,
+                  `is_active` enum('0','1') DEFAULT '1',
+                  `created_at` timestamp NULL DEFAULT current_timestamp(),
+                  `updated_at` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+                  `deleted_at` timestamp NULL DEFAULT NULL,
+                  PRIMARY KEY (`id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+            </pma:table>
+            <pma:table name="roles">
+                CREATE TABLE `roles` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `uuid` varchar(255) DEFAULT NULL,
+                  `nama` varchar(255) DEFAULT NULL,
+                  `is_active` enum('0','1') DEFAULT '1',
+                  `created_at` timestamp NULL DEFAULT current_timestamp(),
+                  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+                  `deleted_at` timestamp NULL DEFAULT NULL,
+                  PRIMARY KEY (`id`) USING BTREE
+                ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+            </pma:table>
+            <pma:table name="users">
+                CREATE TABLE `users` (
+                  `id` int(11) NOT NULL AUTO_INCREMENT,
+                  `uuid` varchar(255) DEFAULT NULL,
+                  `username` varchar(255) DEFAULT NULL,
+                  `email` varchar(255) DEFAULT NULL,
+                  `password` varchar(255) DEFAULT NULL,
+                  `nama` varchar(255) DEFAULT NULL,
+                  `is_active` enum('0','1') DEFAULT '1',
+                  `created_at` timestamp NULL DEFAULT current_timestamp(),
+                  `updated_at` timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+                  `deleted_at` timestamp NULL DEFAULT NULL,
+                  PRIMARY KEY (`id`) USING BTREE
+                ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+            </pma:table>
+            <pma:table name="user_role">
+                CREATE TABLE `user_role` (
+                  `user_id` int(11) NOT NULL,
+                  `role_id` int(11) NOT NULL,
+                  `is_active` enum('0','1') DEFAULT '1',
+                  PRIMARY KEY (`user_id`,`role_id`) USING BTREE
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ROW_FORMAT=DYNAMIC;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'ci-skote'
+    -->
+    <database name="ci-skote">
+        <!-- Table actions -->
+        <table name="actions">
+            <column name="id">1</column>
+            <column name="uuid">7e661758-f17b-4112-8597-a76d4cf57421</column>
+            <column name="nama">lihat</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 04:56:09</column>
+            <column name="updated_at">2022-08-30 04:06:46</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <table name="actions">
+            <column name="id">2</column>
+            <column name="uuid">0fd48d7a-0393-4cd5-adc7-979464fe16c0</column>
+            <column name="nama">tambah</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 04:56:09</column>
+            <column name="updated_at">2022-08-27 09:18:05</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <table name="actions">
+            <column name="id">3</column>
+            <column name="uuid">6d30753a-f84d-40d8-a287-eabb7d8627b3</column>
+            <column name="nama">ubah</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 04:56:09</column>
+            <column name="updated_at">2022-08-27 09:18:05</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <table name="actions">
+            <column name="id">4</column>
+            <column name="uuid">786630af-9d79-4e4a-a6b7-d6e162ed719e</column>
+            <column name="nama">hapus</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 04:56:09</column>
+            <column name="updated_at">2022-08-27 09:18:05</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <table name="actions">
+            <column name="id">5</column>
+            <column name="uuid">NULL</column>
+            <column name="nama">unduh</column>
+            <column name="is_active"></column>
+            <column name="created_at">2022-08-27 16:32:38</column>
+            <column name="updated_at">2022-08-27 16:33:58</column>
+            <column name="deleted_at">2022-08-27 23:33:58</column>
+        </table>
+        <!-- Table ci_sessions -->
+        <table name="ci_sessions">
+            <column name="id">5daab9d81ec6e3cd946856682c1c114de049bc19</column>
+            <column name="ip_address">172.31.0.1</column>
+            <column name="timestamp">1663065016</column>
+            <column name="data">__ci_last_regenerate|i:1663065016;id|s:60:&quot;cE5CRS8xRGFia3B0Q0ZvbCsyNDNYZTVIVTFKYWVhdjVMVGtrSnYwajl0dz0=&quot;;nama|s:13:&quot;Administrator&quot;;username|s:5:&quot;admin&quot;;role_id|s:60:&quot;MFhwVkRNTWJFbjVXZitCdkVkU1F3a2gxNFFnQWI4UWRROXFqKzdveFFJRT0=&quot;;nama_role|s:13:&quot;administrator&quot;;multirole|b:1;mode|s:5:&quot;light&quot;;sidebar|s:8:&quot;vertical&quot;;bulan|i:9;tahun|i:2022;</column>
+        </table>
+        <table name="ci_sessions">
+            <column name="id">c5d03a60add5951e973ddcec03e4ee454b2eaf88</column>
+            <column name="ip_address">172.31.0.1</column>
+            <column name="timestamp">1663065387</column>
+            <column name="data">__ci_last_regenerate|i:1663065088;id|s:60:&quot;cElYVWYySDdvcWVSMldid3hJOVE3K0Y3cExGOG9qRE9WRUVkWWJKUGtYdz0=&quot;;nama|s:13:&quot;Administrator&quot;;username|s:5:&quot;admin&quot;;role_id|s:60:&quot;cnMrVldsMkZGM05oemZFWnJLRHpLVWRaK1lXckVpSTUwQ0FtdG5DVFVydz0=&quot;;nama_role|s:13:&quot;administrator&quot;;multirole|b:1;mode|s:5:&quot;light&quot;;sidebar|s:10:&quot;horizontal&quot;;bulan|i:9;tahun|i:2022;</column>
+        </table>
+        <!-- Table contoh -->
+        <table name="contoh">
+            <column name="id">1</column>
+            <column name="uuid">test</column>
+            <column name="kolom_1">test</column>
+            <column name="kolom_2">test</column>
+            <column name="kolom_3">test</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-09-10 05:16:39</column>
+            <column name="updated_at">NULL</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <table name="contoh">
+            <column name="id">2</column>
+            <column name="uuid">test</column>
+            <column name="kolom_1">test</column>
+            <column name="kolom_2">test</column>
+            <column name="kolom_3">test</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-09-10 05:16:39</column>
+            <column name="updated_at">NULL</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <table name="contoh">
+            <column name="id">3</column>
+            <column name="uuid">test</column>
+            <column name="kolom_1">test</column>
+            <column name="kolom_2">test</column>
+            <column name="kolom_3">test</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-09-10 05:16:39</column>
+            <column name="updated_at">NULL</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <!-- Table menus -->
+        <table name="menus">
+            <column name="id">1</column>
+            <column name="uuid">3a553ae6-d07a-498b-8a59-eb1b4880fb22</column>
+            <column name="ref_menu_group_id">1</column>
+            <column name="parent_id">NULL</column>
+            <column name="urutan">1</column>
+            <column name="route">dashboard/index</column>
+            <column name="path">dashboard/</column>
+            <column name="nama">Beranda</column>
+            <column name="icon">bx bx-home-alt</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 04:56:10</column>
+            <column name="updated_at">2022-09-09 07:26:31</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <table name="menus">
+            <column name="id">2</column>
+            <column name="uuid">9be618e6-2abd-4ef9-b1bc-288075b8662c</column>
+            <column name="ref_menu_group_id">2</column>
+            <column name="parent_id">NULL</column>
+            <column name="urutan">2</column>
+            <column name="route">#</column>
+            <column name="path">NULL</column>
+            <column name="nama">Manajemen Menu</column>
+            <column name="icon">bx bx-menu-alt-left</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 04:56:10</column>
+            <column name="updated_at">2022-08-30 07:24:41</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <table name="menus">
+            <column name="id">3</column>
+            <column name="uuid">ea968bb0-4594-471f-b761-1f5db30447f1</column>
+            <column name="ref_menu_group_id">2</column>
+            <column name="parent_id">2</column>
+            <column name="urutan">2</column>
+            <column name="route">menu/index</column>
+            <column name="path">menu/</column>
+            <column name="nama">Menu Utama</column>
+            <column name="icon">NULL</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 04:56:10</column>
+            <column name="updated_at">2022-09-09 06:55:13</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <table name="menus">
+            <column name="id">4</column>
+            <column name="uuid">cf3f5511-1559-4d6f-aecb-73e82b1a4870</column>
+            <column name="ref_menu_group_id">2</column>
+            <column name="parent_id">2</column>
+            <column name="urutan">3</column>
+            <column name="route">menu/sub</column>
+            <column name="path">menu/</column>
+            <column name="nama">Sub Menu</column>
+            <column name="icon">NULL</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 04:56:10</column>
+            <column name="updated_at">2022-09-09 06:55:13</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <table name="menus">
+            <column name="id">5</column>
+            <column name="uuid">a33cee4a-0780-4b60-bd44-ec05f245431b</column>
+            <column name="ref_menu_group_id">2</column>
+            <column name="parent_id">NULL</column>
+            <column name="urutan">3</column>
+            <column name="route">otoritas/index</column>
+            <column name="path">otoritas/</column>
+            <column name="nama">Otoritas</column>
+            <column name="icon">bx bx-key</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 04:56:10</column>
+            <column name="updated_at">2022-09-09 06:55:13</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <table name="menus">
+            <column name="id">6</column>
+            <column name="uuid">22cd2eaf-d1a7-41cc-8ee8-9fecab5b1274</column>
+            <column name="ref_menu_group_id">2</column>
+            <column name="parent_id">NULL</column>
+            <column name="urutan">5</column>
+            <column name="route">users/index</column>
+            <column name="path">users/</column>
+            <column name="nama">Pengguna</column>
+            <column name="icon">bx bx-user</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 04:56:10</column>
+            <column name="updated_at">2022-09-09 06:55:13</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <table name="menus">
+            <column name="id">7</column>
+            <column name="uuid">NULL</column>
+            <column name="ref_menu_group_id">2</column>
+            <column name="parent_id">NULL</column>
+            <column name="urutan">4</column>
+            <column name="route">hak_akses/index</column>
+            <column name="path">hak_akses/</column>
+            <column name="nama">Hak Akses</column>
+            <column name="icon">bx bx-lock-open</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 07:37:35</column>
+            <column name="updated_at">2022-09-09 06:55:13</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <table name="menus">
+            <column name="id">8</column>
+            <column name="uuid">94b673c6-640d-4f99-b0e7-28b584ff0b48</column>
+            <column name="ref_menu_group_id">NULL</column>
+            <column name="parent_id">2</column>
+            <column name="urutan">1</column>
+            <column name="route">referensi/group_menu/index</column>
+            <column name="path">referensi/group_menu/</column>
+            <column name="nama">Grup Menu</column>
+            <column name="icon">NULL</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 15:11:40</column>
+            <column name="updated_at">2022-09-09 06:55:13</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <!-- Table menu_role -->
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">1</column>
+            <column name="action_id">1</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">1</column>
+            <column name="action_id">2</column>
+            <column name="is_active">0</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">1</column>
+            <column name="action_id">3</column>
+            <column name="is_active">0</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">1</column>
+            <column name="action_id">4</column>
+            <column name="is_active">0</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">2</column>
+            <column name="action_id">1</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">3</column>
+            <column name="action_id">1</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">3</column>
+            <column name="action_id">2</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">3</column>
+            <column name="action_id">3</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">3</column>
+            <column name="action_id">4</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">4</column>
+            <column name="action_id">1</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">4</column>
+            <column name="action_id">2</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">4</column>
+            <column name="action_id">3</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">4</column>
+            <column name="action_id">4</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">5</column>
+            <column name="action_id">1</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">5</column>
+            <column name="action_id">2</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">5</column>
+            <column name="action_id">3</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">5</column>
+            <column name="action_id">4</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">6</column>
+            <column name="action_id">1</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">6</column>
+            <column name="action_id">2</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">6</column>
+            <column name="action_id">3</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">6</column>
+            <column name="action_id">4</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">7</column>
+            <column name="action_id">1</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">7</column>
+            <column name="action_id">2</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">7</column>
+            <column name="action_id">3</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">7</column>
+            <column name="action_id">4</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">8</column>
+            <column name="action_id">1</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">8</column>
+            <column name="action_id">2</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">8</column>
+            <column name="action_id">3</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">1</column>
+            <column name="menu_id">8</column>
+            <column name="action_id">4</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">2</column>
+            <column name="menu_id">1</column>
+            <column name="action_id">1</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="menu_role">
+            <column name="role_id">2</column>
+            <column name="menu_id">1</column>
+            <column name="action_id">2</column>
+            <column name="is_active">0</column>
+        </table>
+        <!-- Table ref_menu_group -->
+        <table name="ref_menu_group">
+            <column name="id">1</column>
+            <column name="uuid">7a3da03e-89fd-4396-a47a-ad8a9b35c695</column>
+            <column name="nama">Dashboard</column>
+            <column name="urutan">1</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 05:46:12</column>
+            <column name="updated_at">2022-08-30 08:15:49</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <table name="ref_menu_group">
+            <column name="id">2</column>
+            <column name="uuid">c7db7e15-c120-4224-8fe6-8cc63354e90e</column>
+            <column name="nama">Pengaturan</column>
+            <column name="urutan">3</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 05:46:35</column>
+            <column name="updated_at">2022-08-27 16:07:20</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <table name="ref_menu_group">
+            <column name="id">3</column>
+            <column name="uuid">NULL</column>
+            <column name="nama">Utama</column>
+            <column name="urutan">2</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 16:07:00</column>
+            <column name="updated_at">2022-08-27 16:07:15</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <!-- Table roles -->
+        <table name="roles">
+            <column name="id">1</column>
+            <column name="uuid">c03bd81b-3310-4a40-bf06-6dd811b90d77</column>
+            <column name="nama">administrator</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 04:56:09</column>
+            <column name="updated_at">2022-08-30 08:07:41</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <table name="roles">
+            <column name="id">2</column>
+            <column name="uuid">acc44540-857b-441d-afcb-b755367ef2e6</column>
+            <column name="nama">operator</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 04:56:09</column>
+            <column name="updated_at">2022-08-30 08:07:54</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <!-- Table users -->
+        <table name="users">
+            <column name="id">1</column>
+            <column name="uuid">861e5d40-4415-44d8-a7b0-1d8a7d2b4433</column>
+            <column name="username">admin</column>
+            <column name="email">admin@email.com</column>
+            <column name="password">$argon2i$v=19$m=65536,t=4,p=1$V3RqZGZ4MDBBSUFOdlZmbA$Uug6urHzLLhEDCyjbKjfH4zc0Bk0WETlIwT4SdTozdw</column>
+            <column name="nama">Administrator</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 04:56:10</column>
+            <column name="updated_at">2022-09-12 12:52:38</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <table name="users">
+            <column name="id">2</column>
+            <column name="uuid">874da2f6-8556-4688-8b7e-c6b41df8071a</column>
+            <column name="username">operator</column>
+            <column name="email">operator@email.com</column>
+            <column name="password">$argon2i$v=19$m=65536,t=4,p=1$bzY1b1EvbzBoY0Vtekhwdg$HvZ5Ney2rqHsOV8P2ZqPFpQOPbRIE4xeF+gJoG4QsyI</column>
+            <column name="nama">Operator</column>
+            <column name="is_active">1</column>
+            <column name="created_at">2022-08-27 04:56:10</column>
+            <column name="updated_at">2022-08-30 12:07:48</column>
+            <column name="deleted_at">NULL</column>
+        </table>
+        <!-- Table user_role -->
+        <table name="user_role">
+            <column name="user_id">1</column>
+            <column name="role_id">1</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="user_role">
+            <column name="user_id">1</column>
+            <column name="role_id">2</column>
+            <column name="is_active">1</column>
+        </table>
+        <table name="user_role">
+            <column name="user_id">2</column>
+            <column name="role_id">1</column>
+            <column name="is_active">0</column>
+        </table>
+        <table name="user_role">
+            <column name="user_id">2</column>
+            <column name="role_id">2</column>
+            <column name="is_active">1</column>
+        </table>
+    </database>
+</pma_xml_export>

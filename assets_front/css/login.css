@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@400;500;600;700&display=swap");
+
+body, .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: "Quicksand", sans-serif;
+}
+
+body {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+label {
+    font-weight: 600;
+}
+
+.text-primary {
+    color: #a54686 !important;
+}
+
+.btn-primary {
+    font-size: 1rem;
+    font-weight: 600;
+    background-color: #a54686;
+}
+
+.btn-primary:hover {
+    border-color: #87356b;
+    background-color: #87356b;
+}
+
+.login-wrapper .left-side {
+    height: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+.login-wrapper .left-side::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+.login-wrapper .left-side .content-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+}
+
+.login-wrapper .left-side .bg-slider {
+    background-color: #fff;
+    border-radius: 7px;
+}
+
+.login-wrapper .left-side .img-left,
+.login-wrapper .right-side .img-logo {
+    max-width: 200px;
+}
+
+.login-wrapper .right-side .title h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #a54686;
+}
+
+.login-wrapper .right-side input {
+    font-size: 1rem !important;
+}
+
+.login-wrapper .right-side input:focus {
+    border-color: #a54686 !important;
+}
+
+.login-wrapper .right-side input:-webkit-autofill,
+.login-wrapper .right-side input:-webkit-autofill:hover,
+.login-wrapper .right-side input:-webkit-autofill:focus {
+    box-shadow: 0 0 0px 1000px #fff8fd inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+@media (max-width: 1600px) {
+    .login-wrapper .right-side .img-logo {
+        max-width: 150px;
+    }
+}

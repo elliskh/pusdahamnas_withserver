@@ -1,0 +1,1 @@
+<script>window.location='https://pusdahamnas.komnasham.go.id/en/home/data';</script>
