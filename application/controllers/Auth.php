@@ -345,7 +345,8 @@ class Auth extends MY_Controller
 
 		// Ellis: cannot run multiple php requests on local, disable first
 		// $url = base_url().'v1/api/auth/register';
-		$url = 'http://127.0.0.1:8000/api/auth/register';
+		// $url = 'http://127.0.0.1:8000/api/auth/register';
+		$url = base_url() . 'api/auth/register';
 
 		$postData = array(
 			'apikey' => '$2y$12$WI/TFDjRzOd/wzZkRbm8ZOyjNFfjmfzStPBhCGIGxwkqQh.nNW.k6',
@@ -490,7 +491,8 @@ class Auth extends MY_Controller
 
 		// Ellis: cannot run multiple php requests on local, disable first
 		// $url = base_url() . 'v1/api/auth/verification-register';
-		$url = 'http://127.0.0.1:8000/api/auth/verification-register';
+		// $url = 'http://127.0.0.1:8000/api/auth/verification-register';
+		$url = base_url() . 'api/auth/verification-register';
 
 		$postData = array(
 			'apikey' => '$2y$12$WI/TFDjRzOd/wzZkRbm8ZOyjNFfjmfzStPBhCGIGxwkqQh.nNW.k6',
@@ -1007,7 +1009,8 @@ class Auth extends MY_Controller
 	{
 		method('post');
 
-		$url = 'http://127.0.0.1:8000/api/auth/resendOtp';
+		// $url = 'http://127.0.0.1:8000/api/auth/resendOtp';
+		$url = base_url() . 'api/auth/resendOtp';
 		$postData = [
 			'apikey' => '$2y$12$WI/TFDjRzOd/wzZkRbm8ZOyjNFfjmfzStPBhCGIGxwkqQh.nNW.k6',
 			'email' => decrypt($this->session->userdata('email')),
@@ -1065,34 +1068,38 @@ class Auth extends MY_Controller
 
 	public function oauthGoogle()
 	{
-		method('post');
-
-		$url = 'http://127.0.0.1:8000/api/auth/resendOtp';
-		$postData = [
-			'apikey' => '$2y$12$WI/TFDjRzOd/wzZkRbm8ZOyjNFfjmfzStPBhCGIGxwkqQh.nNW.k6',
-			'email' => decrypt($this->session->userdata('email')),
-			'name' => decrypt($this->session->userdata('name')),
-		];
-
-		$ch = curl_init($url);
-
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_POST, true);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postData));
-		curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 15);
-		curl_setopt($ch, CURLOPT_VERBOSE, true);
-		curl_setopt($ch, CURLOPT_TIMEOUT, 30);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, [
-			'Content-Type: application/x-www-form-urlencoded',
+		// method('post');			
+		echo json_encode([
+				'success' => false,
+				'message' => 'On Progress'
 		]);
 
-		$response = curl_exec($ch);
-		$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-		$curlError = curl_error($ch);
+		// $url = 'http://127.0.0.1:8000/api/auth/oauthGoogle';
+		// $postData = [
+		// 	'apikey' => '$2y$12$WI/TFDjRzOd/wzZkRbm8ZOyjNFfjmfzStPBhCGIGxwkqQh.nNW.k6',
+		// 	'email' => decrypt($this->session->userdata('email')),
+		// 	'name' => decrypt($this->session->userdata('name')),
+		// ];
 
-		curl_close($ch);
+		// $ch = curl_init($url);
+
+		// curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		// curl_setopt($ch, CURLOPT_POST, true);
+		// curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($postData));
+		// curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 15);
+		// curl_setopt($ch, CURLOPT_VERBOSE, true);
+		// curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+		// curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+		// curl_setopt($ch, CURLOPT_HTTPHEADER, [
+		// 	'Content-Type: application/x-www-form-urlencoded',
+		// ]);
+
+		// $response = curl_exec($ch);
+		// $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		// $curlError = curl_error($ch);
+
+		// curl_close($ch);
 	}
 
 }
