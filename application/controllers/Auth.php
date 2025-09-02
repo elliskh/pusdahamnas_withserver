@@ -346,7 +346,7 @@ class Auth extends MY_Controller
 		// Ellis: cannot run multiple php requests on local, disable first
 		// $url = base_url().'v1/api/auth/register';
 		// $url = 'http://127.0.0.1:8000/api/auth/register';
-		$url = base_url() . 'api/auth/register';
+		$url = 'http://192.168.5.9:8000/api/auth/register'; // tbcheck server receive same port
 
 		$postData = array(
 			'apikey' => '$2y$12$WI/TFDjRzOd/wzZkRbm8ZOyjNFfjmfzStPBhCGIGxwkqQh.nNW.k6',
@@ -492,7 +492,7 @@ class Auth extends MY_Controller
 		// Ellis: cannot run multiple php requests on local, disable first
 		// $url = base_url() . 'v1/api/auth/verification-register';
 		// $url = 'http://127.0.0.1:8000/api/auth/verification-register';
-		$url = base_url() . 'api/auth/verification-register';
+		$url = 'http://192.168.5.9:8000/api/auth/verification-register';
 
 		$postData = array(
 			'apikey' => '$2y$12$WI/TFDjRzOd/wzZkRbm8ZOyjNFfjmfzStPBhCGIGxwkqQh.nNW.k6',
@@ -1010,7 +1010,7 @@ class Auth extends MY_Controller
 		method('post');
 
 		// $url = 'http://127.0.0.1:8000/api/auth/resendOtp';
-		$url = base_url() . 'api/auth/resendOtp';
+		$url = 'http://192.168.5.9:8000/api/auth/resendOtp';
 		$postData = [
 			'apikey' => '$2y$12$WI/TFDjRzOd/wzZkRbm8ZOyjNFfjmfzStPBhCGIGxwkqQh.nNW.k6',
 			'email' => decrypt($this->session->userdata('email')),
