@@ -25,7 +25,8 @@ class Auth_model extends CI_Model
 
 		// Ellis: cannot run multiple php requests on local, disable first
 		// $url = base_url().'v1/api/auth/register';
-		$url = 'http://127.0.0.1:8000/api/auth/login';
+		// $url = 'http://127.0.0.1:8000/api/auth/login';
+		$url = 'http://192.168.5.9:8000/api/auth/login';
 
 		$postData = array(
 			'apikey' => '$2y$12$WI/TFDjRzOd/wzZkRbm8ZOyjNFfjmfzStPBhCGIGxwkqQh.nNW.k6',
